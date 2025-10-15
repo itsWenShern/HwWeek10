@@ -68,29 +68,6 @@
           {"field": "Loss", "type": "quantitative", "title": "Loss (ha)", "format": ","}
         ]
       }
-    },
-    {
-      "mark": {"type": "rule", "strokeDash": [4, 4], "color": "green"},
-      "encoding": {
-        "x": {"datum": 2017, "type": "ordinal"}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "text": "All states decreased in annual tree loss",
-        "align": "left",
-        "baseline": "top",
-        "dx": 5,
-        "dy": -300,
-        "color": "green",
-        "fontSize": 12,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "x": {"datum": 2017, "type": "ordinal"},
-        "y": {"datum": 0}
-      }
     }
   ]
 }
