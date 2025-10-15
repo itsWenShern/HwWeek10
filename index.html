@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malaysia Tree Cover Loss Dashboard</title>
+  <title>Two Visualisations Side by Side</title>
 
   <!-- Vega & Vega-Lite -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -22,8 +22,8 @@
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
-      margin: 40px;
       background-color: #fafafa;
+      margin: 40px;
       color: #333;
     }
 
@@ -34,8 +34,8 @@
 
     .pure-g {
       display: flex;
-      gap: 30px;
       justify-content: space-between;
+      gap: 20px;
     }
 
     .pure-u-1-2 {
@@ -48,61 +48,34 @@
       background-color: #fff;
       padding: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      height: 500px; /* 👈 Ensures both visualisations are same height */
-    }
-
-    h2 {
-      text-align: center;
-    }
-
-    a {
-      color: #0072B2;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #666;
-    }
-
-    hr {
-      margin: 60px 0;
+      height: 500px; 
     }
   </style>
 </head>
 
 <body>
-  <h1>Malaysia Tree Cover Loss Dashboard (2001–2024)</h1>
 
-  <!-- Two visualisations side by side -->
+  <h1>Malaysia Tree Cover Loss Dashboard</h1>
+
+  <!-- Two equal columns -->
   <div class="pure-g">
     <div class="pure-u-1-2">
-      <h2>Tree Cover Loss by State (2024)</h2>
-      <div id="vis2" class="vis-container"></div>
+      <div id="vis1" class="vis-container"></div>
     </div>
 
     <div class="pure-u-1-2">
-      <h2>Annual Tree Cover Loss (2015–2024)</h2>
-      <div id="vis1" class="vis-container"></div>
+      <div id="vis2" class="vis-container"></div>
     </div>
-  </div>
-
-  <hr>
-
-  <div class="footer">
-    <p>
-      This dashboard was created for FIT3179 Homework Week 10 based on inspiration for Week 9 Studio. <br>
-      Data source: <a href="https://www.globalforestwatch.org/" target="_blank">Global Forest Watch</a>
-    </p>
   </div>
 
   <script type="text/javascript">
-    const specVis1 = "./annual-tree-loss-line.json";
-    const specVis2 = "./tree-cover-loss-2024-bar.json";
+    // Replace with your Vega-Lite specs
+    const specVis1 = "./tree-cover-loss-2024-bar.json";
+    const specVis2 = "./annual-tree-loss-line.json";
 
     vegaEmbed('#vis1', specVis1, { actions: false }).catch(console.error);
     vegaEmbed('#vis2', specVis2, { actions: false }).catch(console.error);
   </script>
+
 </body>
 </html>
