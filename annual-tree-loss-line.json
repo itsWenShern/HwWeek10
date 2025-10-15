@@ -9,6 +9,9 @@
     {"filter": "datum.country === 'Malaysia'"},
     {"filter": "datum.threshold == 30"},
     {
+      "filter": "datum.subnational1 == 'Sarawak' || datum.subnational1 == 'Sabah' || datum.subnational1 == 'Pahang' || datum.subnational1 == 'Perak' || datum.subnational1 == 'Johor'"
+    },
+    {
       "fold": [
         "tc_loss_ha_2015","tc_loss_ha_2016",
         "tc_loss_ha_2017","tc_loss_ha_2018","tc_loss_ha_2019","tc_loss_ha_2020",
@@ -68,6 +71,29 @@
           {"field": "Year", "type": "quantitative", "title": "Year"},
           {"field": "Loss", "type": "quantitative", "title": "Loss (ha)", "format": ","}
         ]
+      }
+    },
+        {
+      "mark": {"type": "rule", "strokeDash": [4, 4], "color": "green"},
+      "encoding": {
+        "x": {"datum": 2017, "type": "ordinal"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "All states decreased in annual tree loss",
+        "align": "left",
+        "baseline": "top",
+        "dx": 5,
+        "dy": -195,
+        "color": "green",
+        "fontSize": 12,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "x": {"datum": 2017, "type": "ordinal"},
+        "y": {"datum": 0}
       }
     }
   ]

@@ -22,7 +22,14 @@
       "title": "Tree Cover Loss (ha)"
     },
     "color": {
-      "value": "darkblue"
+      "condition": {
+        "test": {
+          "field": "subnational1",
+          "oneOf": ["Sarawak", "Sabah"]
+        },
+        "value": "darkblue"
+      },
+      "value": "darkgrey"
     },
     "tooltip": [
       {"field": "subnational1", "type": "nominal", "title": "State"},
