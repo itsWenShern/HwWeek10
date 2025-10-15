@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Annual Tree Cover Loss in Top 5 Largest Malaysian States (2001–2024)",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/itsWenShern/HwWeek10/refs/heads/main/Subnational%201%20Tree%20loss.csv"
+  },
+  "transform": [
+    {"filter": "datum.country === 'Malaysia'"},
+    {"filter": "datum.threshold == 30"},
+    {
+      "filter": "datum.subnational1 == 'Sarawak' || datum.subnational1 == 'Sabah' || datum.subnational1 == 'Pahang' || datum.subnational1 == 'Perak' || datum.subnational1 == 'Johor'"
+    },
+    {
+      "fold": [
+        "tc_loss_ha_2001","tc_loss_ha_2002","tc_loss_ha_2003","tc_loss_ha_2004",
+        "tc_loss_ha_2005","tc_loss_ha_2006","tc_loss_ha_2007","tc_loss_ha_2008",
+        "tc_loss_ha_2009","tc_loss_ha_2010","tc_loss_ha_2011","tc_loss_ha_2012",
+        "tc_loss_ha_2013","tc_loss_ha_2014","tc_loss_ha_2015","tc_loss_ha_2016",
+        "tc_loss_ha_2017","tc_loss_ha_2018","tc_loss_ha_2019","tc_loss_ha_2020",
+        "tc_loss_ha_2021","tc_loss_ha_2022","tc_loss_ha_2023","tc_loss_ha_2024"
+      ],
+      "as": ["YearString", "Loss"]
+    },
+    {
+      "calculate": "toNumber(slice(datum.YearString, -4))",
+      "as": "Year"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "line", "point": true},
+      "params": [
+        {
+          "name": "state_selection",
+          "select": {"type": "point", "fields": ["subnational1"]},
+          "bind": "legend"
+        }
+      ],
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal", "title": "Year"},
+        "y": {"field": "Loss", "type": "quantitative", "title": "Tree Cover Loss (ha)"},
+        "color": {
+          "field": "subnational1",
+          "type": "nominal",
+          "title": "State",
+          "scale": {
+            "range": [
+              "darkblue",  
+              "aqua",  
+              "yellow",  
+              "purple",  
+              "brown"   
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {"param": "state_selection", "value": 1},
+          "value": 0.25
+        },
+        "tooltip": [
+          {"field": "subnational1", "type": "nominal", "title": "State"},
+          {"field": "Year", "type": "quantitative", "title": "Year"},
+          {"field": "Loss", "type": "quantitative", "title": "Loss (ha)", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "rule", "strokeDash": [4, 4], "color": "green"},
+      "encoding": {
+        "x": {"datum": 2017, "type": "ordinal"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "All states decreased in annual tree loss",
+        "align": "left",
+        "baseline": "top",
+        "dx": 5,
+        "dy": -300,
+        "color": "green",
+        "fontSize": 12,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "x": {"datum": 2017, "type": "ordinal"},
+        "y": {"datum": 0}
+      }
+    }
+  ]
+}
