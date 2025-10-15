@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Annual Tree Cover Loss in Top 5 Largest Malaysian States (2001–2024)",
+  "title": "Annual Tree Cover Loss in Malaysian States (2001–2024)",
   "data": {
     "url": "https://raw.githubusercontent.com/itsWenShern/HwWeek10/refs/heads/main/Subnational%201%20Tree%20loss.csv"
   },
