@@ -20,6 +20,7 @@ body {
 
 .vis-container {
     width: 100%;
+    overflow-x: auto;
 }
 
 .description h2,
