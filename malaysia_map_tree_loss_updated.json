@@ -6,7 +6,7 @@
   },
   "width": "container",
   "height": 450,
-  "projection": {"type": "mercator", "center": [110, 4], "scale": 2500},
+  "projection": {"type": "mercator", "center": [110, 4], "scale": 2650},
   "layer": [
     {
       "data": {"sphere": true},
