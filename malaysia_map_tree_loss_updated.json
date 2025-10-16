@@ -31,7 +31,7 @@
           "lookup": "properties.name",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/itsWenShern/HwWeek9/refs/heads/main/msia_deforestation_threshold30.csv",
+              "url": "https://raw.githubusercontent.com/itsWenShern/HwWeek10/refs/heads/main/msia_deforestation_threshold30.csv",
               "format": {"type": "csv"}
             },
             "key": "state",
