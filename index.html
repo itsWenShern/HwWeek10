@@ -48,18 +48,8 @@
     </div>
     <!-- end pure grid group -->
 
+    <!-- 2nd Vis-->
     <div class="pure-g">
-      <div class="pure-u-1-2">
-        <div class="description description-left">
-          <p>
-            This bar chart shows that in 2024, <strong>Sarawak and Sabah</strong> had 
-            <strong>drastically higher tree cover loss</strong> compared to all other Malaysian 
-            states. After these <strong>top two</strong>,the amount of loss 
-            <strong>drops off sharply</strong>, with most other regions showing 
-            <strong>progressively smaller figures</strong>.
-          </p>
-        </div>
-      </div>
       <div class="pure-u-1-2">
         <div id="vis2" class="vis-container"></div>
       </div>
@@ -68,7 +58,7 @@
   </div>  <!-- end page -->
 
   <script type="text/javascript">
-    const specVis2 = "./tree-cover-loss-2024-bar.json";
+    const specVis2 = "./malaysia_map_tree_loss_updated.json";
     const specVis1 = "./annual-tree-loss-line.json";
 
    vegaEmbed('#vis1', specVis1).catch(console.error);

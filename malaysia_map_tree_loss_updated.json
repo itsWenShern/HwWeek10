@@ -1,0 +1,107 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Malaysia Tree-Cover Loss (% of 2000 Extent) (2024)",
+    "anchor": "start" 
+  },
+  "width": 1000,
+  "height": 450,
+  "projection": {"type": "mercator", "center": [110, 4], "scale": 2850},
+  "layer": [
+    {
+      "data": {"sphere": true},
+      "mark": {"type": "geoshape", "fill": "lightblue", "stroke": null}
+    },
+    {
+      "data": {"graticule": {"step": [5, 5]}},
+      "mark": {
+        "type": "geoshape",
+        "stroke": "grey",
+        "strokeWidth": 0.3,
+        "fill": null
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/itsWenShern/HwWeek9/refs/heads/main/Malaysia_States.json",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/itsWenShern/HwWeek9/refs/heads/main/msia_deforestation_threshold30.csv",
+              "format": {"type": "csv"}
+            },
+            "key": "state",
+            "fields": ["loss_pct_2000", "loss_ha", "extent_2000_ha"]
+          }
+        },
+        {"calculate": "isValid(datum.loss_pct_2000)", "as": "hasData"}
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.hasData",
+            "field": "loss_pct_2000",
+            "type": "quantitative",
+            "scale": {"scheme": "orangered"},
+            "legend": {"title": "% of 2000 extent"}
+          },
+          "value": "#808080"
+        },
+        "tooltip": [
+          {"field": "properties.name", "title": "State"},
+          {
+            "field": "loss_pct_2000",
+            "title": "% loss (latest)",
+            "format": ".2f"
+          },
+          {"field": "loss_ha", "title": "Loss (ha)", "format": ","},
+          {
+            "field": "extent_2000_ha",
+            "title": "Extent 2000 (ha)",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"lon": 102.25, "lat": 2.2}]},
+      "mark": {"type": "point", "filled": true, "size": 60},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "color": {"value": "#000"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 102.25,
+            "lat": 2.2,
+            "text": "Melaka: highest loss rate in 2024"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 9,
+        "dy": 0,
+        "fill": "#000"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "text"}
+      }
+    }
+  ]
+}
