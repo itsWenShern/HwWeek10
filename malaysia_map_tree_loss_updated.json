@@ -4,7 +4,7 @@
     "text": "Malaysia Tree-Cover Loss (% of 2000 Extent) (2024)",
     "anchor": "start" 
   },
-  "width": con,
+  "width": "container",
   "height": 450,
   "projection": {"type": "mercator", "center": [110, 4], "scale": 2850},
   "layer": [
