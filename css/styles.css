@@ -42,3 +42,8 @@ h1 {
 .small-font {
     font-size: 14px;
 }
+
+.description p {
+    font-size: 18px;       /* Increase text size */
+    line-height: 1.6;      /* Improve readability */
+}
